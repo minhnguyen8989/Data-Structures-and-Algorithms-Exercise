@@ -42,13 +42,33 @@ public class Main {
         queue1.offer("A");
         queue1.offer("H");
 
-        while (!queue1.isEmpty()) {
-            System.out.println(queue1.poll());
-        }
+        //while (!queue1.isEmpty()) {
+            //System.out.println(queue1.poll());
+        //}
 
 
+        //LinkedList (Note: does not have index like ArrayList)
+        //treat LinkedList like Stack
+
+        LinkedList<String> linkedList = new LinkedList<String>();
+
+//        linkedList.push("first person");
+//        linkedList.push("second person");
+//        linkedList.push("third person");
 
 
+        linkedList.offer("first person");
+        linkedList.offer("second person");
+        linkedList.offer("third person");
+
+
+        //added element at index 2
+        linkedList.add(2, "after second person");
+
+
+        System.out.println(linkedList);
+        System.out.println(linkedList.peekFirst());
+        System.out.println(linkedList.peekLast());
 
 
 
