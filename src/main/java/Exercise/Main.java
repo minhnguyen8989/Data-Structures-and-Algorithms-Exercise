@@ -62,15 +62,78 @@ public class Main {
         linkedList.offer("third person");
 
 
-        //added element at index 2
+        //added element at index 2 (inserting element at any index)
         linkedList.add(2, "after second person");
 
 
-        System.out.println(linkedList);
-        System.out.println(linkedList.peekFirst());
-        System.out.println(linkedList.peekLast());
+//        System.out.println(linkedList);
+//        System.out.println(linkedList.peekFirst());
+//        System.out.println(linkedList.peekLast());
+
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add("Hello");
+        arrayList.add("My name is Minh");
 
 
+//        System.out.println(arrayList);
 
+
+        //Dynamic Array (ArrayList) - Static Array (int[] = new int [3])
+
+        DynamicArray dynamicArray = new DynamicArray(5);
+
+        System.out.println(dynamicArray.capacity);
+
+
+    }
+
+    public static class DynamicArray {
+        int size;
+        int capacity = 10;
+        Object[] array;
+
+        public DynamicArray() {
+            this.array = new Object[capacity];
+        }
+
+        public DynamicArray(int capacity) {
+            this.capacity = capacity;
+            this.array = new Object[capacity];
+        }
+
+        public void add(Object data) {
+            if(size >= capacity) {
+                grow();
+            }
+            array[size]
+        }
+
+        public void insert(int index, Object data) {
+
+        }
+
+        public void delete(Object data) {
+
+        }
+
+        public int search() {
+            return -1;
+        }
+
+        private void grow() {
+
+        }
+
+        private void shrink() {
+
+        }
+
+        public boolean isEmpty() {
+            return size == 0;
+        }
+
+        public String toString() {
+            return null;
+        }
     }
 }
