@@ -73,67 +73,103 @@ public class Main {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("Hello");
         arrayList.add("My name is Minh");
-
-
 //        System.out.println(arrayList);
 
 
-        //Dynamic Array (ArrayList) - Static Array (int[] = new int [3])
+    //Linear Search - Linear Time (Run Time)
+        int[] array1 = {4,5,2,7,3,2,1,6,8};
+        int index1 = linearSearch(array1, 5);
 
-        DynamicArray dynamicArray = new DynamicArray(5);
+        if(index1 != -1){
+            //System.out.println("Element found at index: " + index);
+        }
+        else {
+            //System.out.println("Element NOT found");
+        }
 
-        System.out.println(dynamicArray.capacity);
 
+    //Binary Search - logarithmic time (Run Time) - good for data has million Elements
+        int array[] = new int[100000];
+        int target = 30;
+
+        for(int i = 0; i < array.length; i++) {
+            array[i] = i;
+        }
+
+//      int index2 = Arrays.binarySearch(array, target);
+        int index2 = binarySearch(array, target);
+
+        if(index2 == -1) {
+            //System.out.println("Element NOT Found");
+        } else {
+            //System.out.println("Element found at: " + index2);
+        }
+
+
+
+//        Interpolation Search
+        int[] array3 = {1,2,3,4,5,6,7,8,9};
+        int index3 = interpolationSearch(array3, 8);
+
+        System.out.println("Element found at: " + index3);
 
     }
 
-    public static class DynamicArray {
-        int size;
-        int capacity = 10;
-        Object[] array;
+    private static int interpolationSearch(int[] array3, int value3) {
 
-        public DynamicArray() {
-            this.array = new Object[capacity];
-        }
+        int high = array3.length -1;
+        int low = 0;
 
-        public DynamicArray(int capacity) {
-            this.capacity = capacity;
-            this.array = new Object[capacity];
-        }
+        while(value3 >= array3[low] && value3 <= array3[high] && low <= high) {
+             int probe = (high - low) * (value3 - array3[low]) / (array3[high] - array3[low]);
 
-        public void add(Object data) {
-            if(size >= capacity) {
-                grow();
+            System.out.println("probe: " + probe);
+
+            if(array3[probe] == value3) {
+                return probe;
+            }else if (array3[probe] < value3) {
+                low = probe + 1;
+            }else {
+                high = probe -1;
             }
-            array[size]
         }
-
-        public void insert(int index, Object data) {
-
-        }
-
-        public void delete(Object data) {
-
-        }
-
-        public int search() {
-            return -1;
-        }
-
-        private void grow() {
-
-        }
-
-        private void shrink() {
-
-        }
-
-        public boolean isEmpty() {
-            return size == 0;
-        }
-
-        public String toString() {
-            return null;
-        }
+        return -1;
     }
+
+
+    private static int binarySearch(int[] array, int target) {
+        int low = 0;
+        int high = array.length -1;
+
+        while(low <= high) {
+            int middle = low + (high - low)/2;
+            int value = array[middle];
+
+            //System.out.println("middle: " + value);
+
+            if(value < target) {
+                low = middle + 1;
+            }else if (value > target) {
+                high = middle -1;
+            }else {
+                return middle; //target Found
+            }
+
+        }
+
+        return -1;// target NOT found
+    }
+
+
+    private static int linearSearch(int[] array, int value) {
+        for(int i = 0; i < array.length; i++) {
+            if (array[i] == value) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
 }
+
