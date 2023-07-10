@@ -8,3 +8,8 @@ Big O notation - Runtime
 <li>O(n log n) = quasilinear time</li>
 <li>O(n^2) = quadratic time</li>
 </ul>
+Sort algorithms
+<ul>
+<li>Bubble sort</li>
+<li>Selection Sort</li>
+</ul>

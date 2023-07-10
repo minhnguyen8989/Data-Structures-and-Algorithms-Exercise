@@ -43,7 +43,7 @@ public class Main {
         queue1.offer("H");
 
         //while (!queue1.isEmpty()) {
-            //System.out.println(queue1.poll());
+        //System.out.println(queue1.poll());
         //}
 
 
@@ -76,44 +76,89 @@ public class Main {
 //        System.out.println(arrayList);
 
 
-    //Linear Search - Linear Time (Run Time)
-        int[] array1 = {4,5,2,7,3,2,1,6,8};
+        //Linear Search - Linear Time (Run Time)
+        int[] array1 = {4, 5, 2, 7, 3, 2, 1, 6, 8};
         int index1 = linearSearch(array1, 5);
 
-        if(index1 != -1){
+        if (index1 != -1) {
             //System.out.println("Element found at index: " + index);
-        }
-        else {
+        } else {
             //System.out.println("Element NOT found");
         }
 
 
-    //Binary Search - logarithmic time (Run Time) - good for data has million Elements
+        //Binary Search - logarithmic time (Run Time) - good for data has million Elements
         int array[] = new int[100000];
         int target = 30;
 
-        for(int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             array[i] = i;
         }
 
 //      int index2 = Arrays.binarySearch(array, target);
         int index2 = binarySearch(array, target);
 
-        if(index2 == -1) {
+        if (index2 == -1) {
             //System.out.println("Element NOT Found");
         } else {
             //System.out.println("Element found at: " + index2);
         }
 
 
-
 //        Interpolation Search
-        int[] array3 = {1,2,3,4,5,6,7,8,9};
+        int[] array3 = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         int index3 = interpolationSearch(array3, 8);
 
-        System.out.println("Element found at: " + index3);
+        //System.out.println("Element found at: " + index3);
+
+
+//        Bubble Sort - NO GOOD for large set of data - O(n^2) runtime
+        int[] array4 = {4, 5, 2, 7, 3, 2, 1, 6, 8, 10, 9};
+        bubbleSort(array4);
+
+        for (int i : array4) {
+//            System.out.println(i);
+        }
+
+
+//        Selection Sort - NO GOOD for large set of data - O(n^2) runtime
+        selectionSort(array4);
+
+        for (int i : array4) {
+            System.out.println(i);
+        }
 
     }
+
+
+    private static void selectionSort(int array[]) {
+        for(int i = 0; i < array.length  -1 ; i++){
+            int min = i;
+            for(int j = i + 1; j < array.length; j++) {
+                if(array[min] > array[j]) {
+                    min = j;
+                }
+            }
+            int temp = array[i];
+            array[i] = array[min];
+            array[min] = temp;
+        }
+    }
+
+
+
+    private static void bubbleSort(int array4[]) {
+        for (int i = 0; i < array4.length - 1; i++) {
+            for (int j = 0; j < array4.length - i - 1; j++) {
+                if (array4[j] > array4[j + 1]) {
+                    int temp = array4[j];
+                    array4[j] = array4[j + 1];
+                    array4[j + 1] = temp;
+                }
+            }
+        }
+    }
+
 
     private static int interpolationSearch(int[] array3, int value3) {
 
@@ -123,7 +168,7 @@ public class Main {
         while(value3 >= array3[low] && value3 <= array3[high] && low <= high) {
              int probe = (high - low) * (value3 - array3[low]) / (array3[high] - array3[low]);
 
-            System.out.println("probe: " + probe);
+            //System.out.println("probe: " + probe);
 
             if(array3[probe] == value3) {
                 return probe;
