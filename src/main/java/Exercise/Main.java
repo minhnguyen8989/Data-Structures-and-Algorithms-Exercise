@@ -125,9 +125,46 @@ public class Main {
         selectionSort(array4);
 
         for (int i : array4) {
-            System.out.println(i);
+//            System.out.println(i);
         }
 
+
+
+//        Insertion Sort
+
+        int[] array5 = {4, 5, 2, 7, 3, 2, 1, 6, 8, 10, 9};
+
+        insertionSort(array5);
+
+        for (int i : array5) {
+//            System.out.println(i);
+        }
+
+
+//        Recursion
+        walk(5);
+
+    }
+
+    private static void walk(int steps) {
+        if( steps < 1) {
+            return; //base case
+        }
+        System.out.println("You take a step!");
+        walk(steps -1); //recursive
+    }
+
+    private static void insertionSort(int array[]) {
+        for(int i = 1; i < array.length; i++) {
+            int temp = array[i];
+            int j = i -1;
+
+            while(j >= 0 && array[j] > temp) {
+                array[j + 1] = array[j];
+                j--;
+            }
+            array[j + 1] = temp;
+        }
     }
 
 
